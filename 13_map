@@ -1,3 +1,8 @@
+/*
+所有罗马数字加起来
+计算6种情况该减去的数目
+减掉两倍（多加了一次）
+*/
 class Solution {
 public:
     int romanToInt(string s) {
