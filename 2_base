@@ -1,0 +1,25 @@
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) 
+    {
+        ListNode* pHead=new ListNode(0);
+        ListNode *pCurrent=pHead;
+	   int overload=0;//是不是有进位；有进位为1；
+        while(l1||l2||overload)
+        {
+            int sum=(l1?l1->val:0)+(l2?l2->val:0)+overload;//某一位的值为l1/l2的值加上进位的值；
+            if(sum>=10)//如果这个和大于10
+            {
+                sum%=10;//更新这个值
+                overload=1;//并且产生进位；
+            }
+            else
+                overload=0;
+            pCurrent->next=new ListNode(sum);//将当前的值赋给第一位；也就是个位数；
+            pCurrent=pCurrent->next;//当前的位置往下进行；也就是十位数
+            if(l1) l1=l1->next;//l1链表往后遍历；
+            if(l2) l2=l2->next;//l2链表往后遍历；
+        }
+        return pHead->next;
+    }
+};
